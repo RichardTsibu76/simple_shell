@@ -1,6 +1,8 @@
- Simple Shell
+Simple Shell.
+
 Resources
-Read or watch:
+
+You may read or watch whichever is suitable:
 
 Unix shell
 Thompson shell
