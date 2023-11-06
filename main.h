@@ -19,6 +19,9 @@
 /* the header for the boolen true or false */
 #include <stdbool.h>
 
+/* for handling size_t type for unsigned for values */
+#include <stddef.h>
+
 /* THE VARIOUS PROTOTYPES OF THE FUNCTIONS AS PART OF THE SYNOPSIS */
 int put_char(char c);
 void put_prompt(void);
