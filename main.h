@@ -1,46 +1,74 @@
 #ifndef MAIN_H
-#define MIAN_H
+#define MAIN_H
 
-/* These are the list of header files */
-/* Header for input and output */
+/* THE HEADER FILES FOR THE FUNCTIONS */
+
 #include <stdio.h>
-/* Header files manipulating strings */
-#include <string.h>
-/* Header for unix or other functions or system calls */
 #include <unistd.h>
-/* Header for allocating memory dynamically  for malloc precisely*/
 #include <stdlib.h>
-/* Header files for file controllability */
-#include <fcntl.h>
-/* handling system and type definitons for data structures */
+#include <string.h>
 #include <sys/types.h>
-/* For signal handling */ 
+#include <sys/wait.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 #include <signal.h>
-/* the header for the boolen true or false */
 #include <stdbool.h>
 
-/* for handling size_t type for unsigned for values */
-#include <stddef.h>
 
-/* THE VARIOUS PROTOTYPES OF THE FUNCTIONS AS PART OF THE SYNOPSIS */
+/* THE PROTOTYPES OF ALL THE FUNCTIONS */
+
+void sigint_handler(int sig_int);
+
+/* WHEN EXITING THE SHELL */
+bool exit_op(char  **argv);
+
+bool inter_rupt(char **argv, char *buffer);
+
+size_t white_space(char **argv, char *t_buf);
+
+char **check_quote(char *buffer, char **word);
+
+extern char **environ;
+
+void put_err(char *pro_name, char *cmd);
+
 int put_char(char c);
-void put_prompt(void);
-/* for string duplicate */
 
+void put_prompt(void);
+
+/* THIS IS FOR STRRING DUPLICATE FOR KEEPING A COPY OF BUFFER */
 char *_strdup(char *str);
-/* for tokenization using delimeter */
+
+/* THIS IS THE MAIN FUNCTION WHERE TOKENIZATION TAKES PLACE */
 char **break_line(char *buf_tok);
+
+/* THIS IS FOR THE PATH OF ALL THE EXECUTABLES EMBEDDED IN THE ENVIRON */
+char *_path(char *file_name, char *all_path);
+
+/* THIS TYPICALLY FOR THE GETTING ACCESS TO THE PATH */
 char *_getenv(char **env, char *name);
+
+/* THE PROTOTYPE FOR THE TRUE FOR FALSE WITH TYPPE BOOL */
 bool put_env(char **env);
+
+/* PROTOTYPE FOR THE CREATING A PROCESS PROCESSS */
 void call_fork(char **argv, char *prog_name, char *full_path, char **env);
-/* This function calculate the len of string */
+
+/*CALCULATING THE LENGTH OF THE STRING */
 int _strlen(char *s);
-/* This function prototypes is for copying of strng from source to destination */
+/* THE FUNCTION PROTOTYPE FOR COPYING STRING FROM SOURCE TO DESTINATION */
 char *_strcpy(char *dest, char *src);
+
+/*JOINS OR APPENDS STRINGS */
 char *_strcat(char *dest, char *src);
-/* using the string compare function */
+
+/*COMPARE STRINGS */
 int _strcmp(char *s1, char *s2);
+
+/*STRING COMPARE*/
 int _strncmp(char *s1, char *s2, int n);
+
+/*STRING MANUPULATION */
 char *_strchr(char *s, char c);
 
 #endif
