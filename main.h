@@ -26,7 +26,8 @@ bool inter_rupt(char **argv, char *buffer);
 
 size_t white_space(char **argv, char *t_buf);
 
-char **check_quote(char *buffer, char **word);
+/* dealing with double quote and tokenization */
+char **deal_with_quote(char *buffer, char **string);
 
 extern char **environ;
 
@@ -52,7 +53,7 @@ char *_getenv(char **env, char *name);
 bool put_env(char **env);
 
 /* PROTOTYPE FOR THE CREATING A PROCESS PROCESSS */
-void call_fork(char **argv, char *prog_name, char *full_path, char **env);
+void call_fork(char **argv, char *prog_name, char *entire_path, char **env);
 
 /*CALCULATING THE LENGTH OF THE STRING */
 int _strlen(char *s);
