@@ -20,9 +20,9 @@
 void sigint_handler(int sig_int);
 
 /* WHEN EXITING THE SHELL */
-bool exit_op(char  **argv);
+bool exiting_shell(char  **argv);
 
-bool inter_rupt(char **argv, char *buffer);
+bool revoke_f(char **argv, char *buffer);
 
 size_t white_space(char **argv, char *t_buf);
 
@@ -41,10 +41,10 @@ void put_prompt(void);
 char *_strdup(char *str);
 
 /* THIS IS THE MAIN FUNCTION WHERE TOKENIZATION TAKES PLACE */
-char **break_line(char *buf_tok);
+char **divide_various_line(char *buf_tok);
 
 /* THIS IS FOR THE PATH OF ALL THE EXECUTABLES EMBEDDED IN THE ENVIRON */
-char *_path(char *file_name, char *all_path);
+char *dealer_path(char *file_name, char *all_path);
 
 /* THIS TYPICALLY FOR THE GETTING ACCESS TO THE PATH */
 char *_getenv(char **env, char *name);
@@ -53,10 +53,11 @@ char *_getenv(char **env, char *name);
 bool put_env(char **env);
 
 /* PROTOTYPE FOR THE CREATING A PROCESS PROCESSS */
-void call_fork(char **argv, char *prog_name, char *entire_path, char **env);
+void invoke_fork(char **argv, char *prog_name, char *entire_path, char **env);
 
 /*CALCULATING THE LENGTH OF THE STRING */
 int _strlen(char *s);
+
 /* THE FUNCTION PROTOTYPE FOR COPYING STRING FROM SOURCE TO DESTINATION */
 char *_strcpy(char *dest, char *src);
 
@@ -69,7 +70,11 @@ int _strcmp(char *s1, char *s2);
 /*STRING COMPARE*/
 int _strncmp(char *s1, char *s2, int n);
 
-/*STRING MANUPULATION */
+/*STRiING MANUPULATION */
 char *_strchr(char *s, char c);
 
+/* this prototype adds an environmental variable*/
+int _setenv(const char *name, const char *value, int overwrite);
+/* this delete the var name from the evironment */
+int _unsetenv(const char *name);
 #endif
