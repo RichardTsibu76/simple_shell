@@ -4,8 +4,8 @@
  *@ac: counter of arguments
  *@args: argumments
  *@env: The environment of variable for the PATH
- *	for all the executables
- *Return: This returns 0 on success
+ *	for all the executables.
+ *Return: This returns 0 on success.
  */
 int main(int ac, char **args, char **env)
 {
