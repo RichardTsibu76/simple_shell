@@ -1,8 +1,8 @@
 #include "main.h"
 
 /**
- *divide_various_line - parses each of the string and returns it
- *		until reaches NULL
+ *divide_various_line - parses
+ *@delim: separator
  *@buffer: holder of these group of words
  *Return: returns tokenized words until the end
  */

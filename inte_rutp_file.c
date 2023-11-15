@@ -3,7 +3,6 @@
 /**
  *revoke_f - this function handles contrl + D, does interfere
  *@buffer: storage for the for getline reads
- *@argv: parsed string
  *Return: Nothing its void
  */
 

@@ -1,7 +1,7 @@
 #include "main.h"
 /**
 *free_tokens - this function frees the buffer
-*av: buffer to free
+*@av: buffer to free
 *Return
 */
 
