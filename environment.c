@@ -20,3 +20,19 @@ char *_getenv(char **env, char *name)
 	}
 	return (NULL);
 }
+/**
+*penv - a file
+*Return: void deos not ret
+*/
+int penv(void)
+{
+	int i = 0;
+
+	while (environ[i] != NULL)
+	{
+		write(1, environ[i], _strlen(environ[i]));
+		put_char('\n');
+		i++;
+	}
+	return (0);
+}

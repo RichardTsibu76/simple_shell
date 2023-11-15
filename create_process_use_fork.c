@@ -8,10 +8,10 @@
  *@env: where all current variables are found
  *Return: this returuns nothing it's void
  */
-void invoke_fork(char **argv, char *prog_name, char *entire_path, char **env)
+int invoke_fork(char **argv, char *prog_name, char *entire_path, char **env)
 {
 	pid_t Birthed_pid;
-	int status;
+	int status = 0;
 
 	Birthed_pid = fork();
 	if (Birthed_pid == -1)
@@ -30,6 +30,9 @@ void invoke_fork(char **argv, char *prog_name, char *entire_path, char **env)
 	else
 	{
 		wait(&status);
+		if (WIFEXITED(status))
+			status = WEXITSTATUS(status);
 		free(entire_path);
 	}
+	return (status);
 }

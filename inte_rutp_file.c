@@ -7,18 +7,11 @@
  *Return: Nothing its void
  */
 
-bool revoke_f(char **argv, char *buffer)
+bool revoke_f(char *buffer)
 {
-	int index;
-/* using the isatty which checks if fd refers to the terminal */
+	/* using the isatty which checks if fd refers to the terminal */
 	if (isatty(STDIN_FILENO) == 1)
 		put_char('\n');
-	if (argv != NULL)
-	{
-		for (index = 0; argv && argv[index]; index++)
-			free(argv[index]);
-		free(argv);
-	}
 	free(buffer);
 	return (true);
 }

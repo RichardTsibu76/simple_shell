@@ -16,13 +16,14 @@
 
 
 /* THE PROTOTYPES OF ALL THE FUNCTIONS */
-
+void free_tokens(char **av);
+int penv(void);
 void sigint_handler(int sig_int);
 
 /* WHEN EXITING THE SHELL */
 bool exiting_shell(char  **argv);
 
-bool revoke_f(char **argv, char *buffer);
+bool revoke_f(char *buffer);
 
 size_t white_space(char **argv, char *t_buf);
 
@@ -31,7 +32,7 @@ char **deal_with_quote(char *buffer, char **string);
 
 extern char **environ;
 
-void put_err(char *pro_name, char *cmd);
+int put_err(char *pro_name, char *cmd);
 
 int put_char(char c);
 
@@ -41,10 +42,10 @@ void put_prompt(void);
 char *_strdup(char *str);
 
 /* THIS IS THE MAIN FUNCTION WHERE TOKENIZATION TAKES PLACE */
-char **divide_various_line(char *buf_tok);
+char **divide_various_line(char *buf_tok, const char *delim);
 
 /* THIS IS FOR THE PATH OF ALL THE EXECUTABLES EMBEDDED IN THE ENVIRON */
-char *dealer_path(char *file_name, char *all_path);
+char *dealer_path(char *file_name);
 
 /* THIS TYPICALLY FOR THE GETTING ACCESS TO THE PATH */
 char *_getenv(char **env, char *name);
@@ -53,7 +54,7 @@ char *_getenv(char **env, char *name);
 bool put_env(char **env);
 
 /* PROTOTYPE FOR THE CREATING A PROCESS PROCESSS */
-void invoke_fork(char **argv, char *prog_name, char *entire_path, char **env);
+int invoke_fork(char **argv, char *prog_name, char *entire_path, char **env);
 
 /*CALCULATING THE LENGTH OF THE STRING */
 int _strlen(char *s);

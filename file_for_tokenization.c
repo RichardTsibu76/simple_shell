@@ -7,43 +7,32 @@
  *Return: returns tokenized words until the end
  */
 
-char **divide_various_line(char *buffer)
+char **divide_various_line(char *buffer, const char *delim)
 {
-	char **string, *temp_stor, *tok = NULL, *separator = " \v\b\n\t\r";
-	int checker = 0, index = 0, k;
+	char **string, *temp_stor, *tok = NULL;
+	int checker = 0, index = 0;
 
 	temp_stor = _strdup(buffer);
-	if (temp_stor == NULL)
-		return (NULL);
-	tok = strtok(temp_stor, separator);
-	while (tok != NULL)
+	tok = strtok(temp_stor, delim);
+	for (; tok != NULL; checker++)
+		tok = strtok(NULL, delim);
+	if (checker == 0)
 	{
-		checker++;
-		tok = strtok(NULL, separator);
+		free(temp_stor);
+		return (NULL);
 	}
-	checker++;
-/* allocating memory dynamically */
-	string = malloc(sizeof(char *) * checker);
+	string = malloc(sizeof(char *) * (checker + 1));
 	if (string == NULL)
 	{
 		free(temp_stor);
 		return (NULL);
 	}
-	tok = strtok(buffer, separator);
+	tok = strtok(buffer, delim);
 	while (tok != NULL)
 	{
 		string[index] = _strdup(tok);
-		if (string[index] == NULL)
-		{
-			for (k = 0; k < index; k++)
-				free(string[k]);
-			free(string);
-			free(buffer);
-			free(temp_stor);
-			return (NULL);
-		}
 		index++;
-		tok = strtok(NULL, separator);
+		tok = strtok(NULL, delim);
 	}
 	string[index] = NULL;
 	free(temp_stor);
