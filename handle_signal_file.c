@@ -11,6 +11,7 @@ void sigint_handler(int sig_int)
 	/* this signal handling varies across unix version*/
 	if (sig_int == SIGINT)
 	{
+	/*printing of new line charactaer*/
 		put_char('\n');
 		put_prompt();
 	}
